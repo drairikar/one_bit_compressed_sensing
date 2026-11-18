@@ -2,6 +2,7 @@
 clc; clear; close all;
 % load('../data/mnist.mat')
 load("mnist.mat")
+if ~exist("../output", "dir"), mkdir("../output"); end
 
 % image (training.images(:,:,18)*255);
 [height, width, image_num] = size(training.images);
@@ -151,7 +152,7 @@ ylabel("SNR (dB)")
 legend("OBBCS", "BIHT","OBLP", "OBBP");
 grid on;
 % exportgraphics(gcf, "../output/snr_to_ratios_1img.png", "Resolution",300);
-exportgraphics(gcf, "C:\Users\Admin\OneDrive - Delft University of Technology\DC and Sparsity\Combined\src\output_image_3.png","Resolution", 300);
+exportgraphics(gcf, "../output/output_image_3.png","Resolution", 300);
 hold off;
 
 
@@ -166,7 +167,7 @@ ylabel("NMSE")
 legend("OBBCS", "BIHT","OBLP", "OBBP");
 grid('on')
 % exportgraphics(gcf, "../output/nmse_to_ratios_1img.png", "Resolution",300);
-exportgraphics(gcf, "C:\Users\Admin\OneDrive - Delft University of Technology\DC and Sparsity\Combined\src\output_image_4.png","Resolution", 300);
+exportgraphics(gcf, "../output/output_image_4.png","Resolution", 300);
 hold off;
 
 
@@ -213,7 +214,7 @@ end
 %%
 % Plot average SNRs
 figure(4); clf;
-load("snr_obbcs.mat","snr_obbcs")
+% snr_obbcs was computed in the loop above (previously overwritten by a cached snr_obbcs.mat)
 plot(MNratios, snr_obbcs); hold on;
 plot(MNratios, snr_biht);
 xlabel("M/N ratios");
@@ -221,6 +222,6 @@ ylabel("SNR (dB)")
 legend("OBBCS", "BIHT");
 grid on;
 % exportgraphics(gcf, "../output/snr_to_ratios.png", "Resolution",300);
-exportgraphics(gcf, "C:\Users\Admin\OneDrive - Delft University of Technology\DC and Sparsity\Combined\src\output_image_2.png","Resolution", 300);
+exportgraphics(gcf, "../output/output_image_2.png","Resolution", 300);
 hold off;
 

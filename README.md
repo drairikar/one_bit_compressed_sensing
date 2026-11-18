@@ -16,8 +16,9 @@ Group project, MSc Electrical Engineering, TU Delft
 | `one_bit_lp.m` | Convex LP relaxation with a total-variation term (CVX) |
 | `one_bit_bp.m` | One-bit basis pursuit with a total-variation term (CVX) |
 
-Helpers: `gen_data.m` (synthetic K-sparse signals with optional sign flips), `get_stats.m` (NMSE and
-output SNR, computed after normalisation because 1-bit CS only recovers the direction of x), `sgn.m`,
+Helpers: `gen_data.m` (synthetic K-sparse signals with optional sign flips), `get_stats.m` (NMSE, computed on
+unit-normalised vectors because 1-bit CS only recovers the direction of x, and output SNR, which is not
+normalised and therefore depends on the reconstructed amplitude), `sgn.m`,
 `f_lambda.m`.
 
 ## Experiments (`src/main.m`)
@@ -28,7 +29,9 @@ output SNR, computed after normalisation because 1-bit CS only recovers the dire
 
 ## Running
 
-Requires MATLAB with [CVX](https://cvxr.com/cvx/). Put `mnist.mat` in `src/` (it is not committed), then:
+Requires MATLAB with [CVX](https://cvxr.com/cvx/) and the Statistics and Signal Processing toolboxes
+(`random`, `snr`). Put `mnist.mat` in `src/` (it is not committed), then run the script below; figures are
+written to `output/`.
 
 ```matlab
 cd src
